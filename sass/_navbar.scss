@@ -1,0 +1,92 @@
+nav {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100px;
+    right: 0;
+    border-left: 1px solid hsla(0, 0%, 100%, 0.1);
+    z-index: 50;
+}
+
+.burger {
+    position: fixed;
+    right: 0;
+    padding-left: 35px;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    z-index: 150;
+    transition: all 0.3s linear;
+    width: 100px;
+}
+
+.burger-container {
+    height: 102px;
+    margin-bottom: 15px;
+}
+
+.burger-line {
+    width: 32px;
+    height: 1px;
+    background-color:white;
+    transition: all .3s linear;
+}
+
+.active > .burger-line.second {
+    transform: translate3d(0px, -6.5px, 0px) rotateZ(-45deg);
+    width: 32px;
+    transform-style: preserve-3d;
+}
+
+.active > .burger-line.first {
+    transform: translate3d(0px, 6.5px, 0px) rotateZ(45deg);
+    transform-style: preserve-3d;
+}
+  
+.burger-line.second {
+    width: 22px;
+    margin-top: 12px;
+}
+
+.social-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-wrapper a {
+    transition: all 0.3s linear;
+}
+
+.scroll-button {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 190px;
+    margin-top: auto;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid hsla(0, 0%, 100%, 0.1);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.scroll-text {
+    position: absolute;
+    transform: rotate(-90deg);
+    font-family: Verdana, Geneva, sans-serif;
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+nav img {
+    width: 18px;
+    margin: 40px;
+}
+
+nav a:hover , .burger.inactive:hover {
+    background-color:hsla(0, 0%, 100%, .1);
+}
