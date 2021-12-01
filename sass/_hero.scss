@@ -31,26 +31,36 @@
 .sliding-hero-container {
     width: 300vw;
     position: relative;
-    animation: slide 20s infinite;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    transform: translate(-100vw,0);
+}
+
+.hero-slider-background-1.trans-toggle {
+    background-size: 100%;
+}
+
+.hero-slider-background-2.trans-toggle {
+    background-size: 100%;
+}
+
+.hero-slider-background-3.trans-toggle {
+    background-size: 100%;
 }
 
 @keyframes slide {
     0%{left: 0%;}
-    10%{left: 0%;}
-    20%{left: 0%;}
-    30%{left: -100%;}
-    40%{left: -100%;}
-    50%{left: -100%;}
-    60%{left: -200%;}
-    70%{left: -200%;}
-    80%{left: -200%;}
-    90%{left: 0%;}
-    100%{left: 0%;}
+    100%{left: -100%;}
+}
+
+@keyframes slide2 {
+    0%{left: 0%;}
+    100%{left: -100%;}
 }
 
 .sliding {
     float: left;
-    width: 32.9%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -59,49 +69,54 @@
     position: relative;
 }
 
-.hero-slider-1::before {
-    content: "";
+.select {
+    transition: background-size 4s ease-out;
+}
+
+.hero-slider-background-1 {
     background-image: url(../img/heroimage1.jpg);
-    background-size: cover;
     background-position: center;
     position: absolute;
     top: 0px;
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: 0.3;
+    opacity: 0.7;
+    background-size: 110%;
 }
 
-.hero-slider-2::before {
-    content: "";
+.hero-slider-background-2 {
     background-image: url(../img/heroimage2.jpg);
-    background-size: cover;
     background-position: center;
     position: absolute;
     top: 0px;
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: 0.3;
+    opacity: 0.7;
+    background-size: 110%;
 }
 
-.hero-slider-3::before {
-    content: "";
+.hero-slider-background-3 {
     background-image: url(../img/heroimage3.jpg);
-    background-size: cover;
     background-position: center;
     position: absolute;
     top: 0px;
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: 0.3;
-
+    opacity: 0.7;
+    background-size: 110%;
 }
 
 .sliding-text {
     position: relative;
+    display: none;
 }
+
+.trans-toggle + .sliding-text{
+    display: block;
+} 
 
 .moving-header{
     color: white;
@@ -118,6 +133,44 @@
     align-items: center;
   }
 
-h1 {
-    color: white;
+.header {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: auto;
+    bottom: 0%;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header h1{
+    position: relative;
+    left: 0%;
+    top: auto;
+    right: 0%;
+    bottom: auto;
+    z-index: 3;
+    display: flex;
+    width: 200vw;
+    height: 100%;
+    margin-top: 0px;
+    align-items: center;
+    font-family: 'Bebas Neue', sans-serif;
+    // transform: translate(-95px, 0px);
+    color: hsla(0, 0, 100, 0.14);
+    font-size: 70vh;
+    line-height: 1;
+    white-space: nowrap;
+    background-clip: padding-box;
+    object-fit: cover;
+    animation: sliding-header 40s linear infinite;
+}
+
+@keyframes sliding-header {
+    0%{left:0%}
+    100%{left:-180vw}
 }
