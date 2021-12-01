@@ -3,6 +3,7 @@ const menuLink = document.querySelectorAll(".menu-link")
 const hiddenMenu = document.querySelector(".hidden-menu")
 const heroSlider = document.querySelector(".sliding-hero-container")
 const slidingBackground = document.querySelectorAll(".sliding>.select")
+const scrollButton = document.querySelector(".scroll-button")
 
 function handleBurgerClick() {
     this.classList.toggle("active")
@@ -30,7 +31,6 @@ menuLink.forEach((element) => {
 })
 
 function handleHeroSlide() {
-    console.log(heroSlider.style.animationName)
     if (heroSlider.style.animationName == 'slide') {
         heroSlider.style.animationName = 'slide2'
     } else {
@@ -61,7 +61,7 @@ slidingBackground.forEach((element)=> {
 
 setTimeout(()=>{
     document.querySelector('.hero-slider-background-1').classList.toggle('trans-toggle')
-},500)
+},1200)
 
 const loadingScreen = document.querySelector(".loading-screen")
 const preloadingAnimation = document.querySelector(".screen-group-1")
@@ -71,3 +71,35 @@ setTimeout(()=>{
 },1100)
 
 preloadingAnimation.addEventListener("animationend", () => loadingScreen.style.display = "none")
+
+window.addEventListener("scroll", () => {
+    let toTop = document.querySelector(".to-top")
+    let toAbout = document.querySelector(".to-about")
+    if (window.pageYOffset > document.querySelector(".about-container").offsetTop) {
+        toTop.style.display = "flex"
+        toAbout.style.display = "none"
+    } else {
+        toTop.style.display = "none"
+        toAbout.style.display = "flex"
+    }
+})
+
+var aboutSection = document.getElementById("about")
+var topSection = document.getElementById("body")
+document.querySelector(".to-top").addEventListener("click",()=>topSection.scrollIntoView())
+document.querySelector(".to-about").addEventListener("click",()=>aboutSection.scrollIntoView())
+
+const aboutUsImage = document.querySelectorAll(".about-us-image")
+
+function handleFilter() {
+    this.previousElementSibling.style.opacity = "1"
+}
+
+function handleFilter2() {
+    this.previousElementSibling.style.opacity = "0"
+}
+
+aboutUsImage.forEach((element)=>{
+    element.addEventListener("mouseover",handleFilter)
+    element.addEventListener("mouseout",handleFilter2)
+})

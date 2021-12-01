@@ -3,7 +3,7 @@
     pointer-events: none;
     z-index: 1000;
     top: 0;
-    left: -3200px;
+    left: -250vw;
     height: 100vh;
     width: 200vw;
     background-color: goldenrod;
@@ -12,7 +12,7 @@
 }
 
 .active > .sliding-loader {
-    left: 2200px;
+    left: 250vw;
 }
 
 .hidden-menu {

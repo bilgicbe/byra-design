@@ -1,0 +1,128 @@
+.about-container {
+    padding-top: 140px;
+    width: 42vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overflow {
+    overflow: hidden;
+    >h1 {
+        margin-top: 10px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        font-family: Poppins, sans-serif;
+        font-size: 14vw;
+        line-height: 0.8;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+    >h3 {
+        font-size: 10vw;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-align: center;
+        line-height: 1;
+    }
+}
+
+.abo-wrapper {
+    display: flex;
+}
+
+.ut-wrapper {
+    display: flex;
+    >div:first-child {
+        margin-left: auto;
+    }
+}
+
+.about-us-image-container {
+    width: 100%;
+}
+
+.single-image-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vw;
+    width: 100%;
+    height: 47vw;
+}
+
+.about-us-image {
+    width: 100%;
+    margin: auto;
+    transition: filter 0.2s linear;
+    filter: grayscale(0%);
+    &:hover {
+        filter: grayscale(100%);
+    }
+}
+.filter {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    opacity: 0;
+    transition: opacity 400ms ease-in-out;
+}
+.about-paragraph {
+    position: absolute;
+    left: 102%;
+    top: auto;
+    right: -49%;
+    bottom: 0%;
+    margin-bottom: 0px;
+    font-size: 12px;
+    font-weight: 300;
+    font-family: Poppins, sans-serif;
+}
+.experience-years {
+    position: relative;
+    width: 100%;
+    margin-top: 200px;
+}
+
+.experience-years-amount {
+    display: flex;
+    overflow: visible;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins, sans-serif;
+    font-size: 39vw;
+    line-height: 1;
+    font-weight: 300;
+    text-align: center;
+}
+
+.experience-years-text {
+    position: absolute;
+    top: 45%;
+    left: 65%;
+    font-family: Poppins, sans-serif;
+    font-size: 23px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.projects-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 200px;
+}
+
+.completed-projects {
+    margin-bottom: 60px;
+    font-size: 20px;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+  }
+  

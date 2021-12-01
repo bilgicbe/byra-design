@@ -1,14 +1,12 @@
-/*
-font-family: 'Bebas Neue', cursive;
-font-family: 'BenchNine', sans-serif;
-font-family: 'Poppins', sans-serif;
-*/
-
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     color: white;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -18,4 +16,5 @@ body {
 @import "_navbar";
 @import "_menu";
 @import "_hero";
-@import "_preloader"
+@import "_preloader";
+@import "_about";

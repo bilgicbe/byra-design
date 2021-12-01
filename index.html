@@ -6,6 +6,7 @@
     <title>Byrå Design - Webflow HTML Website Template</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=BenchNine:wght@300;400;700&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,500&display=swap"
         rel="stylesheet">
@@ -13,7 +14,7 @@
     <link href="img/favicon32x32.jpg" rel="icon" type="image/x-icon">
 </head>
 
-<body>
+<body id="body">
     <div class="loading-screen">
         <div class="screen-group-1">
             <div class="screen-1"></div>
@@ -77,13 +78,18 @@
                 <img src="img/twitter.svg" alt="twitter">
             </a>
         </div>
-        <a class="scroll-button">
+        <a class="scroll-button to-about">
             <div class="scroll-text">
                 SCROLL
             </div>
         </a>
+        <a class="scroll-button to-top" style="display: none;">
+            <div class="scroll-text">
+                BACK TO TOP
+            </div>
+        </a>
     </nav>
-    <div class="header-container"> 
+    <div class="header-container">
         <a href="#"><img src="img/byra-logo.svg" class="logo" alt="logo"></a>
         <div class="sliding-hero-container">
             <div class="sliding hero-slider-3">
@@ -113,8 +119,76 @@
             <h1>SIMPLICITY IS KEY</h1>
         </div>
     </div>
-
+    <section class="about-container">
+        <div id="about" class="abo-wrapper">
+            <div class="overflow">
+                <h1 data-aos="fade-right" data-aos-once="true">a</h1>
+            </div>
+            <div class="overflow">
+                <h1 data-aos="fade-right" data-aos-once="true">b</h1>
+            </div>
+            <div class="overflow">
+                <h1 data-aos="fade-right" data-aos-once="true">o</h1>
+            </div>
+        </div>
+        <div class="ut-wrapper">
+            <div class="overflow">
+                <h1 data-aos="fade-right" data-aos-once="true">u</h1>
+            </div>
+            <div class="overflow">
+                <h1 data-aos="fade-right" data-aos-once="true">t</h1>
+            </div>
+        </div>
+        <div class="abo-wrapper">
+            <div class="overflow">
+                <h1 data-aos="fade-right" data-aos-once="true">u</h1>
+            </div>
+            <div class="overflow">
+                <h1 data-aos="fade-right" data-aos-once="true">s</h1>
+            </div>
+        </div>
+        <div class="about-us-image-container">
+            <div class="single-image-wrapper">
+                <div class="filter">
+                    <p class="about-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                        varius enim in eros elementum tristique. </p>
+                </div>
+                <img loading="lazy" src="img/about-us.jpg" alt="about-us1" class="about-us-image about-us1">
+            </div>
+            <div class="single-image-wrapper">
+                <div class="filter">
+                    <p class="about-paragraph">Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis
+                        viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. </p>
+                </div>
+                <img loading="lazy" src="img/about-us2.jpg" alt="about-us2" class="about-us-image about-us2">
+            </div>
+            <div class="single-image-wrapper">
+                <div class="filter">
+                    <p class="about-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                        varius enim in eros elementum tristique. </p>
+                </div>
+                <img loading="lazy" src="img/about-us3.jpg" alt="about-us3" class="about-us-image  about-us3">
+            </div>
+        </div>
+        <div class="experience-years">
+            <div class="experience-years-amount">20</div>
+            <div class="experience-years-text">Years of<br>experience</div>
+        </div>
+        <div class="projects-text-container">
+            <p class="completed-projects">Over 1500 Projects completed</p>
+            <div class="overflow">
+                <h3 data-aos="fade-up" data-aos-delay="700" data-aos-easing="ease-out">FEATURED</h3>
+            </div>
+            <div class="overflow">
+                <h3 data-aos="fade-up" data-aos-delay="700" data-aos-easing="ease-out">PROJECTS</h3>
+            </div>
+        </div>
+    </section>
     <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

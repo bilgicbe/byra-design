@@ -7,6 +7,10 @@ nav {
     right: 0;
     border-left: 1px solid hsla(0, 0%, 100%, 0.1);
     z-index: 50;
+    img {
+        width: 18px;
+        margin: 40px;
+    }
 }
 
 .burger {
@@ -53,10 +57,9 @@ nav {
 .social-wrapper {
     display: flex;
     flex-direction: column;
-}
-
-.social-wrapper a {
-    transition: all 0.3s linear;
+    a {
+        transition: all 0.3s linear;
+    }
 }
 
 .scroll-button {
@@ -80,11 +83,6 @@ nav {
     color: #fff;
     font-size: 11px;
     letter-spacing: 2px;
-}
-
-nav img {
-    width: 18px;
-    margin: 40px;
 }
 
 nav a:hover , .burger.inactive:hover {

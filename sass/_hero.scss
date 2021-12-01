@@ -5,27 +5,24 @@
     top: 35px;
     z-index: 50;
 }
-
-.header-container h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  color: white;
-  font-size: 160px;
-  line-height: 1;
-  font-weight: 400;
-  letter-spacing: 5px;
-}
-
-.header-container p {
-  margin-left: 4px;
-  font-family: 'Bebas Neue', sans-serif;
-  color: white;
-  font-size: 1vw;
-  font-weight: 100;
-  letter-spacing: 6px;
-}
-
 .header-container {
     overflow: hidden;
+    h1 {
+        font-family: 'Bebas Neue', sans-serif;
+        color: white;
+        font-size: 160px;
+        line-height: 1;
+        font-weight: 400;
+        letter-spacing: 5px;
+      }
+    p {
+        margin-left: 4px;
+        font-family: 'Bebas Neue', sans-serif;
+        color: white;
+        font-size: 1vw;
+        font-weight: 100;
+        letter-spacing: 6px;
+    }
 }
 
 .sliding-hero-container {
@@ -118,21 +115,6 @@
     display: block;
 } 
 
-.moving-header{
-    color: white;
-    transform: translate3d(-77.535%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); 
-    transform-style: preserve-3d; 
-    will-change: transform;
-}
-
-.moving-header {
-    display: flex;
-    overflow: hidden;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
 .header {
     position: absolute;
     left: 0%;
@@ -145,29 +127,27 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-}
-
-.header h1{
-    position: relative;
-    left: 0%;
-    top: auto;
-    right: 0%;
-    bottom: auto;
-    z-index: 3;
-    display: flex;
-    width: 200vw;
-    height: 100%;
-    margin-top: 0px;
-    align-items: center;
-    font-family: 'Bebas Neue', sans-serif;
-    // transform: translate(-95px, 0px);
-    color: hsla(0, 0, 100, 0.14);
-    font-size: 70vh;
-    line-height: 1;
-    white-space: nowrap;
-    background-clip: padding-box;
-    object-fit: cover;
-    animation: sliding-header 40s linear infinite;
+    h1{
+        position: relative;
+        left: 0%;
+        top: auto;
+        right: 0%;
+        bottom: auto;
+        z-index: 3;
+        display: flex;
+        width: 200vw;
+        height: 100%;
+        margin-top: 0px;
+        align-items: center;
+        font-family: 'Bebas Neue', sans-serif;
+        color: hsla(0, 0, 100, 0.14);
+        font-size: 70vh;
+        line-height: 1;
+        white-space: nowrap;
+        background-clip: padding-box;
+        object-fit: cover;
+        animation: sliding-header 40s linear infinite;
+    }
 }
 
 @keyframes sliding-header {
