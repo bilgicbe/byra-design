@@ -15,48 +15,7 @@ body {
     background-color: black;
 }
 
-.loading-screen {
-    position: fixed;
-    pointer-events: none;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    overflow: hidden;
-    background-color: black;
-    z-index: 999;
-    display: none;
-}
-
-.screen-group-1 {
-    width: 45.8%;
-    display: grid;
-    grid-template-columns: 1fr 0.6fr;
-}
-
-.screen-1 {
-    background-color: wheat;
-    height: 100px;
-}
-
-.screen-2 {
-    background-color: gray;
-}
-
-.screen-3 {
-    background-color: rebeccapurple;
-}
-
-.screen-4 {
-    background-color: saddlebrown;
-}
-
-.screen-group-2 {
-    width: 54%;
-    display: grid;
-    grid-template-columns: 0.9fr 1fr;
-}
-
 @import "_navbar";
 @import "_menu";
 @import "_hero";
+@import "_preloader"

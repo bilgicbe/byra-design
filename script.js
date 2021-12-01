@@ -62,3 +62,12 @@ slidingBackground.forEach((element)=> {
 setTimeout(()=>{
     document.querySelector('.hero-slider-background-1').classList.toggle('trans-toggle')
 },500)
+
+const loadingScreen = document.querySelector(".loading-screen")
+const preloadingAnimation = document.querySelector(".screen-group-1")
+
+setTimeout(()=>{
+    loadingScreen.style.backgroundColor = "transparent"
+},1100)
+
+preloadingAnimation.addEventListener("animationend", () => loadingScreen.style.display = "none")
