@@ -21,7 +21,11 @@
 .screen-1 {
     background-color: white;
     height: 0%;
-    animation: preloader1 2s ease-in 1;
+    animation-name: preloader1;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-direction: normal;
 }
 
 @keyframes preloader1 {
@@ -32,10 +36,22 @@
     100%{height: 100vh; margin-top: 100vh;}    
 }
 
+@keyframes reverse1 {
+    0%{height: 100vh; margin-top: 100vh;}
+    10%{height: 100vh; margin-top: 100vh;}
+    50%{height: 100vh; margin-top: 0vh;}
+    60%{height: 100vh; margin-top: 0vh;}
+    100%{height: 0vh; margin-top: 0vh;}    
+}
+
 .screen-2 {
     background-color: white;
     height: 0%;
-    animation: preloader2 2s ease-in 1;
+    animation-name: preloader2;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-direction: normal;
 }
 
 @keyframes preloader2 {
@@ -44,6 +60,14 @@
     55%{height: 100vh; margin-top: 0vh;}
     95%{height: 100vh; margin-top: 100vh;}
     100%{height: 100vh; margin-top: 100vh;}    
+}
+
+@keyframes reverse2 {
+    0%{height: 100vh; margin-top: 100vh;}
+    5%{height: 100vh; margin-top: 100vh;}
+    45%{height: 100vh; margin-top: 0vh;}
+    55%{height: 100vh; margin-top: 0vh;}
+    95%{height: 0vh; margin-top: 0vh;}    
 }
 
 .screen-group-2 {
@@ -56,7 +80,11 @@
 .screen-3 {
     background-color: white;
     height: 0%;
-    animation: preloader3 2s ease-in 1;
+    animation-name: preloader3;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-direction: normal;
 }
 
 @keyframes preloader3 {
@@ -65,11 +93,21 @@
     65%{height: 100vh; margin-top: 0vh;}
     100%{height: 100vh; margin-top: 100vh;}
 }
+@keyframes reverse3 {
+    0%{height: 100vh; margin-top: 100vh;}
+    35%{height: 100vh; margin-top: 0vh;}
+    50%{height: 100vh; margin-top: 0vh;}
+    90%{height: 0vh; margin-top: 0vh;}
+}
 
 .screen-4 {
     background-color: white;
     height: 0%;
-    animation: preloader4 2s ease-in 1;
+    animation-name: preloader4;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-direction: normal;
 }
 
 @keyframes preloader4 {
@@ -77,4 +115,10 @@
     55%{height: 100vh; margin-top: 0vh;}
     95%{height: 100vh; margin-top: 100vh;}
     100%{height: 100vh; margin-top: 100vh;}
+}
+@keyframes reverse4 {
+    0%{height: 100vh; margin-top: 100vh;}
+    5%{height: 100vh; margin-top: 100vh;}
+    45%{height: 100vh; margin-top: 0vh;}
+    85%{height: 0vh; margin-top: 0vh;}
 }

@@ -1,0 +1,79 @@
+.overflow>.services-text {
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    font-family: Poppins, sans-serif;
+    font-size: 11vw;
+    line-height: 0.8;
+    font-weight: 800;
+    white-space:pre;
+  }
+.services-paragraph {
+    position: relative;
+    padding-top: 60px;
+    padding-right: 100px;
+    width: 55%;
+    left: 45%;
+}
+.main-paragraph {
+    margin-bottom: 20px;
+    font-size: 25px;
+    line-height: 1.5;
+    font-family: Poppins, sans-serif;
+}
+
+.container-move-text {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    &.margin {
+        margin-top: 140px;
+    }
+  }
+.heading-move {
+    position: relative;
+    font-family: Poppins, sans-serif;
+    font-size: 140px;
+    line-height: 1;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow: 0 0 2px gray;
+    white-space: nowrap;
+    background-clip: text;
+    color: black;
+    em {
+        color: inherit;
+    }
+}
+.second-move-heading {
+    position: relative;
+    font-family: Poppins, sans-serif;
+    font-size: 140px;
+    line-height: 1;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow: 0 0 2px gray;
+    white-space: nowrap;
+    background-clip: text;
+    color: black;
+    em {
+        color: inherit;
+    }
+    animation: move-heading 50s linear infinite reverse;
+}
+.heading-move.first {
+    animation: move-heading 50s linear infinite;
+}
+.heading-move.third {
+    animation: move-heading3 50s linear infinite;
+}
+
+@keyframes move-heading {
+    0%{left: 0%;}
+    100%{left: -300%;}
+}
+
+@keyframes move-heading3 {
+    0%{left: 0%;}
+    100%{left: -380%;}    
+}
