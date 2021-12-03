@@ -28,34 +28,59 @@
     width: 100vw;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0s 0.6s, pointer-events 0s 0.6s;
-}
-
-.active.hidden-menu {
-    opacity: 1;
-    pointer-events: all;
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+    }
 }
 
 .menu-body {
     margin-top: 50px;
     width: 400px;
     opacity: 0;
-    padding-left: 100px;
+    margin-left: 500px;
     transition: all 0.6s ease-in-out;
-}
-
-.active .menu-body {
-    opacity: 1;
-    padding-left: 0px;
+    &.active {
+        opacity: 1;
+        margin-left: 0px;
+    }
 }
 
 .menu-link {
+    position: relative;
     margin: 30px;
     text-decoration: none;
     display: flex;
     align-items: center;
     font-family: 'BenchNine', sans-serif;
     cursor: pointer;
+    animation-duration: 1.5s;
+}
+
+@keyframes menulink1 {
+    0%{opacity: 0; left: -50px;}
+    40%{opacity: 0; left: -50px;}
+    70%{opacity: 1; left: 0px;}
+}
+@keyframes menulink2 {
+    0%{opacity: 0; left: -50px;}
+    50%{opacity: 0; left: -50px;}
+    80%{opacity: 1; left: 0px;}
+}
+@keyframes menulink3 {
+    0%{opacity: 0; left: -50px;}
+    40%{opacity: 0; left: -50px;}
+    70%{opacity: 1; left: 0px;}
+}
+@keyframes menulink4 {
+    0%{opacity: 0; left: -50px;}
+    60%{opacity: 0; left: -50px;}
+    90%{opacity: 1; left: 0px;}
+}
+@keyframes menulink5 {
+    0%{opacity: 0; left: -50px;}
+    70%{opacity: 0; left: -50px;}
+    100%{opacity: 1; left: 0px;}
 }
 
 .menu-number {
@@ -90,17 +115,25 @@
     justify-content: flex-start;
     width: 90vw;
     padding: 40px;
-    margin-left: 300px;
-    margin-top: auto;
-    opacity: 0;
-    transition: all 0.4s ease-in-out;
-}
-
-.active .menu-footer {
     margin-left: 0px;
+    margin-top: auto;
     opacity: 1;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    h2, p {
+        animation-duration: 1.5s;
+        animation-timing-function: linear;
+    }
 }
-
+@keyframes menu-footer-entry {
+    0%{opacity: 0;}
+    70%{opacity: 0;}
+    100%{opacity: 1;}
+}
+@keyframes menu-footer-animation {
+    0%{margin-left: 0px; opacity: 1;}
+    100%{margin-left: 1200px; opacity: 0;}
+}
 .menu-footer > p {
     margin-bottom: 3px;
     font-family: 'Poppins', sans-serif;
