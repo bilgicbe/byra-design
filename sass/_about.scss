@@ -29,6 +29,10 @@
 
 .abo-wrapper {
     display: flex;
+    &.us {
+        position: relative;
+        left: -10px;
+    }
 }
 
 .ut-wrapper {
@@ -40,6 +44,7 @@
 
 .about-us-image-container {
     width: 100%;
+    margin-top: 150px;
 }
 
 .single-image-wrapper {
@@ -55,7 +60,7 @@
 .about-us-image {
     width: 100%;
     margin: auto;
-    transition: filter 0.2s linear;
+    transition: filter 0.2s linear, width 0.15s linear; 
     filter: grayscale(0%);
     &:hover {
         filter: grayscale(100%);
@@ -83,11 +88,21 @@
 }
 .experience-years {
     position: relative;
-    width: 100%;
     margin-top: 200px;
 }
 
+.sticky-wrapper {
+    position: sticky;
+    top: 1px;
+    z-index: 4;
+    display: block;
+    overflow: hidden;
+    height: 100vh;
+}
+
 .experience-years-amount {
+    position: static;
+    top: 1px;
     display: flex;
     overflow: visible;
     height: 100vh;
@@ -98,16 +113,19 @@
     line-height: 1;
     font-weight: 300;
     text-align: center;
+    transition: all 0.2s ease;
+    transform-origin: 64.5% 50%;
 }
 
 .experience-years-text {
     position: absolute;
-    top: 45%;
-    left: 65%;
+    top: 15%;
+    right: 34%;
     font-family: Poppins, sans-serif;
     font-size: 23px;
     line-height: 1.2;
     text-align: center;
+    transition: all 0.1s ease;
 }
 
 .projects-text-container {
@@ -115,6 +133,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 140px;
     padding-bottom: 200px;
 }
 
@@ -125,4 +144,15 @@
     font-family: Poppins, sans-serif;
     font-weight: 400;
   }
-  
+
+.featured-projects {
+    height: 100vh;
+}
+
+.featured-images {
+    background-image: url(../img/featuredproject.jpg);
+    background-position: bottom;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}

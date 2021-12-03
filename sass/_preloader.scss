@@ -122,3 +122,36 @@
     45%{height: 100vh; margin-top: 0vh;}
     85%{height: 0vh; margin-top: 0vh;}
 }
+
+.three-lines {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.three-line-1 {
+    width: 1px;
+    height: 0;
+    background-color: gray;
+    margin-left: 28.3vw;
+    transition: height 0.2s ease;
+}
+.three-line-2 {
+    width: 1px;
+    height: 0;
+    background-color: gray;
+    margin-left: 17vw;
+    transition: height 0.2s ease;
+}
+.three-line-3 {
+    width: 1px;
+    height: 0;
+    background-color: gray;
+    margin-left: 24.9vw;
+    transition: height 0.2s ease;
+}

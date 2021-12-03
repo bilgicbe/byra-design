@@ -93,6 +93,20 @@
         opacity: 0;
     }
 }
+
+.our-team-slides.dummy {
+    position: absolute;
+    top: 0;
+        &.dummy-team-slide-4 {
+            left: -740px;
+            opacity: 0;
+        }
+        &.dummy-team-slide-1 {
+            left: 2840px;
+            opacity: 0;
+        }
+}
+
 .our-team-slide-image {
     width: inherit;
     overflow: hidden;

@@ -9,9 +9,9 @@ document.querySelector(".menu-footer").style.animationName = "menu-footer-animat
 function handleBurgerClick() {
     burger.classList.toggle("active")
     let menuFooterAnimation = document.querySelector(".menu-footer").style.animationName
-    if (menuFooterAnimation == "menu-footer-animation"){
+    if (menuFooterAnimation == "menu-footer-animation") {
         document.querySelector(".menu-footer").style.animationName = ""
-        document.querySelectorAll(".menu-footer p, .menu-footer h2").forEach((element)=> element.style.animationName="menu-footer-entry")
+        document.querySelectorAll(".menu-footer p, .menu-footer h2").forEach((element) => element.style.animationName = "menu-footer-entry")
         document.querySelector(".menu-link.menu-link-1").style.animationName = "menulink1"
         document.querySelector(".menu-link.menu-link-2").style.animationName = "menulink2"
         document.querySelector(".menu-link.menu-link-3").style.animationName = "menulink3"
@@ -19,7 +19,7 @@ function handleBurgerClick() {
         document.querySelector(".menu-link.menu-link-5").style.animationName = "menulink5"
     } else {
         document.querySelector(".menu-footer").style.animationName = "menu-footer-animation"
-        document.querySelectorAll(".menu-footer p, .menu-footer h2").forEach((element)=> element.style.animationName="")
+        document.querySelectorAll(".menu-footer p, .menu-footer h2").forEach((element) => element.style.animationName = "")
         document.querySelector(".menu-link.menu-link-1").style.animationName = ""
         document.querySelector(".menu-link.menu-link-2").style.animationName = ""
         document.querySelector(".menu-link.menu-link-3").style.animationName = ""
@@ -28,13 +28,13 @@ function handleBurgerClick() {
     }
     burger.classList.toggle("inactive")
     document.querySelector(".menu-body").classList.toggle("active")
-    setTimeout(()=>{
+    setTimeout(() => {
         document.querySelector(".hidden-menu").classList.toggle("active")
-    },650)
+    }, 650)
 }
 
 burger.addEventListener("click", handleBurgerClick)
-document.querySelectorAll(".menu-link a").forEach((element)=>element.addEventListener("click",handleBurgerClick))
+document.querySelectorAll(".menu-link a").forEach((element) => element.addEventListener("click", handleBurgerClick))
 
 function handleMenuHover() {
     this.querySelector(".menu-number").style.color = "goldenrod"
@@ -54,13 +54,13 @@ menuLink.forEach((element) => {
 })
 
 function handleHeroSlide() {
-    setTimeout(()=>{
+    setTimeout(() => {
         if (heroSlider.style.animationName == 'slide') {
             heroSlider.style.animationName = 'slide2'
         } else {
             heroSlider.style.animationName = 'slide'
         }
-    },1000)
+    }, 1000)
 }
 
 function handleElementDrag() {
@@ -94,37 +94,94 @@ setTimeout(() => {
     loadingScreen.style.backgroundColor = "transparent"
 }, 1100)
 
-window.addEventListener("scroll", () => {
-    let toTop = document.querySelector(".to-top")
-    let toAbout = document.querySelector(".to-about")
-    if (window.pageYOffset > document.querySelector(".about-container").offsetTop - 5) {
-        toTop.style.display = "flex"
-        toAbout.style.display = "none"
-    } else {
-        toTop.style.display = "none"
-        toAbout.style.display = "flex"
-    }
-})
-
 var aboutSection = document.getElementById("About")
 var topSection = document.getElementById("body")
 document.querySelector(".to-top").addEventListener("click", () => topSection.scrollIntoView())
 document.querySelector(".to-about").addEventListener("click", () => aboutSection.scrollIntoView())
 
 const aboutUsImage = document.querySelectorAll(".about-us-image")
-
 function handleFilter() {
     this.previousElementSibling.style.opacity = "1"
 }
-
 function handleFilter2() {
     this.previousElementSibling.style.opacity = "0"
 }
-
 aboutUsImage.forEach((element) => {
     element.addEventListener("mouseover", handleFilter)
     element.addEventListener("mouseout", handleFilter2)
 })
+
+function getOffsetTop(element) {
+    let offsetTop = 0;
+    while(element) {
+      offsetTop += element.offsetTop;
+      element = element.offsetParent;
+    }
+    return offsetTop;
+}
+
+const singleImageWrapper = document.querySelectorAll(".single-image-wrapper")
+function handleScrollingEvents() {
+    let toTop = document.querySelector(".to-top")
+    let toAbout = document.querySelector(".to-about")
+    let winScr = window.pageYOffset
+    let abtCntTop = document.querySelector(".about-container").offsetTop
+    if (winScr > abtCntTop - 5) {
+        toTop.style.display = "flex"
+        toAbout.style.display = "none"
+    } else {
+        toTop.style.display = "none"
+        toAbout.style.display = "flex"
+    }
+    singleImageWrapper.forEach((element)=>{
+        let elOfst = getOffsetTop(element)
+        let elHgh = element.offsetHeight
+        if (elOfst+elHgh/2-150>winScr && winScr >elOfst-100) {
+            element.lastElementChild.style.width = `${100-Math.abs(25*(0.5-Math.abs((winScr-elOfst+100)/(elHgh/2-50)-0.5)))}%`
+        }
+    })
+    let expYearsT = document.querySelector(".experience-years").offsetTop
+    let expYearsH = document.querySelector(".experience-years").offsetHeight
+    if (expYearsT+expYearsH>winScr && winScr>expYearsT-100) {
+        let expText = document.querySelector(".experience-years-text")
+        let expNum = document.querySelector(".experience-years-amount")
+        if (winScr<expYearsT) {
+            expText.style.opacity = "1"
+            expText.style.top = "15%"
+            expNum.style.transform = "scale(1)"           
+        } else {
+            expText.style.opacity = `${ 1 - (2*(winScr-expYearsT)/expYearsH) }`
+            expText.style.top = `${ 15 -((winScr-expYearsT)/4.5) }%`
+            expNum.style.transform = `scale(${ 1 + ((winScr-expYearsT)/40)})`
+        }
+    }
+    let thrLine1 = document.querySelector(".three-line-1")
+    let thrLine2 = document.querySelector(".three-line-2")
+    let thrLine3 = document.querySelector(".three-line-3")
+    let lines = document.querySelector(".three-lines")
+    let portfolioTop = document.querySelector(".portfolio-container").offsetTop
+    if (abtCntTop+1200>winScr && winScr>abtCntTop-300) {
+        lines.style.alignItems = "flex-start"
+        thrLine2.style.height = `${(winScr-abtCntTop+300)*0.1}vh`
+        if(winScr>abtCntTop) {
+            thrLine3.style.height = `${(winScr-abtCntTop)*0.1}vh`
+            if(winScr>abtCntTop+100) {
+                thrLine1.style.height = `${(winScr-abtCntTop-100)*0.1}vh`
+            }
+        }
+    }else if(winScr>portfolioTop+100) {
+                lines.style.alignItems = "flex-end"
+                thrLine1.style.height = `${100-((winScr-portfolioTop-100)*0.1)}vh`
+                thrLine2.style.height = `${100-((winScr-portfolioTop-100)*0.09)}vh`
+                thrLine3.style.height = `${100-((winScr-portfolioTop-100)*0.09)}vh`
+            } else if(winScr>abtCntTop+1000) {
+                    thrLine1.style.height = "100vh"
+                    thrLine2.style.height = "100vh"
+                    thrLine3.style.height = "100vh"
+                }
+}
+
+window.addEventListener("scroll", handleScrollingEvents)
 
 const portfolioLinks = document.querySelectorAll(".portfolio-link")
 portfolioLinks.forEach((element) => {
@@ -263,54 +320,68 @@ document.querySelector(".cross").addEventListener("click", () => {
     portfolioSection.scrollIntoView()
 })
 
-const teamCarousel = document.querySelector(".our-team-slide-container") 
-function handleButtonSelect(rate){
-    document.querySelectorAll(".round-buttons div").forEach((element)=>element.classList.remove("selected-button"))
+const teamCarousel = document.querySelector(".our-team-slide-container")
+function handleButtonSelect(rate) {
+    document.querySelectorAll(".round-buttons div").forEach((element) => element.classList.remove("selected-button"))
     teamCarousel.style.transform = `translate(${rate}px)`
-    document.querySelectorAll(".our-team-slides").forEach((element)=>{element.classList.remove("focused")})
+    document.querySelectorAll(".our-team-slides").forEach((element) => { element.classList.remove("focused") })
 }
 
-document.querySelector(".button-1").addEventListener("click", ()=>{
+document.querySelector(".button-1").addEventListener("click", () => {
     handleButtonSelect(0)
     document.querySelector(".button-1").classList.add("selected-button")
     document.querySelector(".our-team-slide-1").classList.add("focused")
+    document.querySelector(".dummy-team-slide-1").classList.add("focused")
 })
-document.querySelector(".button-2").addEventListener("click", ()=>{
+document.querySelector(".button-2").addEventListener("click", () => {
     handleButtonSelect(-710)
     document.querySelector(".button-2").classList.add("selected-button")
     document.querySelector(".our-team-slide-2").classList.add("focused")
 })
-document.querySelector(".button-3").addEventListener("click", ()=>{
+document.querySelector(".button-3").addEventListener("click", () => {
     handleButtonSelect(-1420)
     document.querySelector(".button-3").classList.add("selected-button")
     document.querySelector(".our-team-slide-3").classList.add("focused")
 })
-document.querySelector(".button-4").addEventListener("click", ()=>{
+document.querySelector(".button-4").addEventListener("click", () => {
     handleButtonSelect(-2130)
     document.querySelector(".button-4").classList.add("selected-button")
     document.querySelector(".our-team-slide-4").classList.add("focused")
+    document.querySelector(".dummy-team-slide-4").classList.add("focused")
 })
 
 document.querySelector(".next-container").addEventListener("click", () => {
-    if (document.querySelector(".selected-button").nextElementSibling==null) {
-        // teamCarousel.appendChild(teamCarousel.firstElementChild)
-        // teamCarousel.appendChild(teamCarousel.firstElementChild)
-        // handleButtonSelect(-1420)
-        // document.querySelector(".our-team-slide-1").classList.add("focused")
-        // document.querySelector(".button-1").classList.add("selected-button")
+    if (document.querySelector(".selected-button").classList.contains("button-4")) {
+        teamCarousel.style.transition = "none"
+        teamCarousel.style.transform = "translate(740px)"
+        document.querySelector(".dummy-team-slide-4").style.opacity = "1"
+        document.querySelector(".dummy-team-slide-4").classList.remove("focused")
+        setTimeout(() => {
+            teamCarousel.style.transition = "all 0.3s linear"
+            handleButtonSelect(0)
+            document.querySelector(".our-team-slide-1").classList.add("focused")
+            document.querySelector(".button-1").classList.add("selected-button")
+            document.querySelector(".dummy-team-slide-1").classList.add("focused")
+        })
     } else {
-    document.querySelector(".selected-button").nextElementSibling.click()
+        document.querySelector(".selected-button").nextElementSibling.click()
     }
 })
 document.querySelector(".prev-container").addEventListener("click", () => {
-    if (document.querySelector(".selected-button").previousElementSibling==null) {
-        // teamCarousel.insertBefore(teamCarousel.lastElementChild,teamCarousel.firstElementChild)
-        // teamCarousel.insertBefore(teamCarousel.lastElementChild,teamCarousel.firstElementChild)
-        // handleButtonSelect(-710)
-        // document.querySelector(".our-team-slide-4").classList.add("focused")
-        // document.querySelector(".button-4").classList.add("selected-button")
+    if (document.querySelector(".selected-button").classList.contains("button-1")) {
+        teamCarousel.style.transition = "none"
+        teamCarousel.style.transform = "translate(-2840px)"
+        document.querySelector(".dummy-team-slide-1").style.opacity = "1"
+        document.querySelector(".dummy-team-slide-1").classList.remove("focused")
+        setTimeout(() => {
+            teamCarousel.style.transition = "all 0.3s linear"
+            handleButtonSelect(-2130)
+            document.querySelector(".our-team-slide-4").classList.add("focused")
+            document.querySelector(".button-4").classList.add("selected-button")
+            document.querySelector(".dummy-team-slide-4").classList.add("focused")
+        })
     } else {
-    document.querySelector(".selected-button").previousElementSibling.click()
+        document.querySelector(".selected-button").previousElementSibling.click()
     }
 })
 
@@ -329,5 +400,9 @@ function handleAwardsOut() {
     awardsParagraphy.style.opacity = 0
 }
 
-document.querySelectorAll(".awards-link").forEach((element) => element.addEventListener("mouseover", handleAwardsOver))
-document.querySelectorAll(".awards-link").forEach((element) => element.addEventListener("mouseout", handleAwardsOut))
+const awardsLinks = document.querySelectorAll(".awards-link")
+awardsLinks.forEach((element) => element.addEventListener("mouseover", handleAwardsOver))
+awardsLinks.forEach((element) => element.addEventListener("mouseout", handleAwardsOut))
+document.querySelector(".awards-body").addEventListener("transitionend",()=> {
+    awardsLinks.forEach((element)=>element.style.opacity = "1")
+})
