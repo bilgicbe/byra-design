@@ -183,10 +183,10 @@ function handleScrollingEvents() {
                         thrLine2.style.height = "100vh"
                         thrLine3.style.height = "100vh"
                 }
-    let featuredImg = document.querySelector(".featured-projects img")
     let featured = document.querySelector(".featured-projects")
     let featuredTop = getOffsetTop(featured)
     if (featuredTop>winScr && winScr>featuredTop-window.innerHeight) {
+    let featuredImg = document.querySelector(".featured-projects img")
         featuredImg.style.top = `${-(featuredTop-winScr)}px`
         // if (featuredTop-(window.innerHeight*0.7)>winScr) {
         //     console.log(`scale(${
@@ -196,6 +196,14 @@ function handleScrollingEvents() {
         //         1-(featuredTop-(window.innerHeight*0.7)-winScr)/((featuredTop-window.innerHeight)-(featuredTop-(window.innerHeight*0.7)))
         //     })`
         // }
+    }
+    let contactTop = document.querySelector(".contact-section").offsetTop
+    if (winScr+100>contactTop) {
+        let lastSliders = document.querySelector(".last-sliders")
+        if (contactTop-winScr>0) {
+            lastSliders.style.left = "0px"
+        }
+        lastSliders.style.left = `-${1.5*(winScr-contactTop)}px`
     }
 }
 
@@ -427,4 +435,16 @@ awardsLinks.forEach((element) => element.addEventListener("mouseover", handleAwa
 awardsLinks.forEach((element) => element.addEventListener("mouseout", handleAwardsOut))
 document.querySelector(".awards-body").addEventListener("transitionend",()=> {
     awardsLinks.forEach((element)=>element.style.opacity = "1")
+})
+
+const form = document.querySelector(".formum")
+
+form.addEventListener("submit",(e)=>{
+    e.preventDefault()
+    let sbmtBtn = document.querySelector(".submit-button")
+    sbmtBtn.value = "Please wait..."
+    setTimeout(()=>{
+        form.style.display = "none"
+        document.querySelector(".thank-you").style.display = "inline-block"
+    },1000)
 })
