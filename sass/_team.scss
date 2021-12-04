@@ -27,6 +27,7 @@
 }
 .team-carousel-wrapper {
     margin-left: 50%;
+    margin-top: 150px;
     .carousel-center {
         position: relative;
         right: 270px;
@@ -36,7 +37,6 @@
     position: relative;
     display: flex;
     transition: all 0.3s linear;
-    margin-top: 150px;
     transform: translate(0%);
 }
 

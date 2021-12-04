@@ -1,8 +1,13 @@
 .about-container {
     padding-top: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-central {
     width: 42vw;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .overflow {
@@ -43,7 +48,6 @@
 }
 
 .about-us-image-container {
-    width: 100%;
     margin-top: 150px;
 }
 
@@ -146,13 +150,13 @@
   }
 
 .featured-projects {
+    position: relative;
     height: 100vh;
-}
-
-.featured-images {
-    background-image: url(../img/featuredproject.jpg);
-    background-position: bottom;
-    background-size: cover;
-    background-position: center;
-    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    img {
+        position: absolute;
+        width: 100%;
+        top: -100%;
+    }
 }

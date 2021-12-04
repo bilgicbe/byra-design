@@ -169,16 +169,34 @@ function handleScrollingEvents() {
                 thrLine1.style.height = `${(winScr-abtCntTop-100)*0.1}vh`
             }
         }
-    }else if(winScr>portfolioTop+100) {
+    }else if(portfolioTop+1300>winScr && winScr>portfolioTop+100) {
                 lines.style.alignItems = "flex-end"
                 thrLine1.style.height = `${100-((winScr-portfolioTop-100)*0.1)}vh`
                 thrLine2.style.height = `${100-((winScr-portfolioTop-100)*0.09)}vh`
                 thrLine3.style.height = `${100-((winScr-portfolioTop-100)*0.09)}vh`
-            } else if(winScr>abtCntTop+1000) {
-                    thrLine1.style.height = "100vh"
-                    thrLine2.style.height = "100vh"
-                    thrLine3.style.height = "100vh"
+            } else if (winScr>=portfolioTop+1300) {
+                thrLine1.style.height = "0vh"
+                thrLine2.style.height = "0vh"
+                thrLine3.style.height = "0vh"                 
+                }else if(winScr>abtCntTop+1000) {
+                        thrLine1.style.height = "100vh"
+                        thrLine2.style.height = "100vh"
+                        thrLine3.style.height = "100vh"
                 }
+    let featuredImg = document.querySelector(".featured-projects img")
+    let featured = document.querySelector(".featured-projects")
+    let featuredTop = getOffsetTop(featured)
+    if (featuredTop>winScr && winScr>featuredTop-window.innerHeight) {
+        featuredImg.style.top = `${-(featuredTop-winScr)}px`
+        // if (featuredTop-(window.innerHeight*0.7)>winScr) {
+        //     console.log(`scale(${
+        //         1-(featuredTop-(window.innerHeight*0.7)-winScr)/((featuredTop-window.innerHeight)-(featuredTop-(window.innerHeight*0.7)))
+        //     })`)
+        //     featuredImg.style.transform = `scale(1.${
+        //         1-(featuredTop-(window.innerHeight*0.7)-winScr)/((featuredTop-window.innerHeight)-(featuredTop-(window.innerHeight*0.7)))
+        //     })`
+        // }
+    }
 }
 
 window.addEventListener("scroll", handleScrollingEvents)
@@ -332,6 +350,8 @@ document.querySelector(".button-1").addEventListener("click", () => {
     document.querySelector(".button-1").classList.add("selected-button")
     document.querySelector(".our-team-slide-1").classList.add("focused")
     document.querySelector(".dummy-team-slide-1").classList.add("focused")
+    document.querySelector(".dummy-team-slide-4").style.opacity = "0"
+    document.querySelector(".dummy-team-slide-1").style.opacity = "0"
 })
 document.querySelector(".button-2").addEventListener("click", () => {
     handleButtonSelect(-710)
@@ -348,6 +368,8 @@ document.querySelector(".button-4").addEventListener("click", () => {
     document.querySelector(".button-4").classList.add("selected-button")
     document.querySelector(".our-team-slide-4").classList.add("focused")
     document.querySelector(".dummy-team-slide-4").classList.add("focused")
+    document.querySelector(".dummy-team-slide-4").style.opacity = "0"
+    document.querySelector(".dummy-team-slide-1").style.opacity = "0"
 })
 
 document.querySelector(".next-container").addEventListener("click", () => {
