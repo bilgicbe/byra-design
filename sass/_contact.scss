@@ -1,5 +1,5 @@
 .contact-section {
-    height: 310vw;
+    height: calc(220vw + 100vh);
     position: relative;
 }
 .last-sliders-sticky {
@@ -54,20 +54,23 @@
         color: black;
     }
 }
+.last-bg-container {
+    width: 60%;
+}
 .last-slide-2 {
     display: flex;
-    background-color: #111;
     .last-slide-2-background {
         background-image: url(../img/bg1.jpg);
-        width: 55%;
+        background-size: cover;
+        background-position: center;
+        width: 100vw;
         height: 100%;
     }
 }
 .info {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    background-color: #111;
     .info-elements {
         margin-left: 40px;
     }
@@ -102,17 +105,16 @@
 
 }
 .last-slide-4 {
-    background-color: #111;
     display: flex;
-    justify-content: space-between;
-    .info-2 {
+    .info {
         width: 35%;
+        margin-left: auto;
     }
     .last-slide-4-background {
         background-image: url(../img/bg3.jpg);
         background-size: cover;
         background-position: center;
-        width: 65%;
+        width: 100vw;
         height: 100%;
     }
 }

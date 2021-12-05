@@ -5,6 +5,8 @@ const heroSlider = document.querySelector(".sliding-hero-container")
 const slidingBackground = document.querySelectorAll(".sliding>.select")
 const scrollButton = document.querySelector(".scroll-button")
 
+const featuredImg = document.querySelector(".featured-projects img")
+
 document.querySelector(".menu-footer").style.animationName = "menu-footer-animation"
 function handleBurgerClick() {
     burger.classList.toggle("active")
@@ -120,12 +122,9 @@ function getOffsetTop(element) {
     return offsetTop;
 }
 
-const singleImageWrapper = document.querySelectorAll(".single-image-wrapper")
-function handleScrollingEvents() {
-    let toTop = document.querySelector(".to-top")
-    let toAbout = document.querySelector(".to-about")
-    let winScr = window.pageYOffset
-    let abtCntTop = document.querySelector(".about-container").offsetTop
+const toTop = document.querySelector(".to-top")
+const toAbout = document.querySelector(".to-about")
+function updateScrollButton(winScr) {
     if (winScr > abtCntTop - 5) {
         toTop.style.display = "flex"
         toAbout.style.display = "none"
@@ -133,6 +132,10 @@ function handleScrollingEvents() {
         toTop.style.display = "none"
         toAbout.style.display = "flex"
     }
+}
+
+const singleImageWrapper = document.querySelectorAll(".single-image-wrapper")
+function updateAboutImages(winScr) {
     singleImageWrapper.forEach((element)=>{
         let elOfst = getOffsetTop(element)
         let elHgh = element.offsetHeight
@@ -140,11 +143,15 @@ function handleScrollingEvents() {
             element.lastElementChild.style.width = `${100-Math.abs(25*(0.5-Math.abs((winScr-elOfst+100)/(elHgh/2-50)-0.5)))}%`
         }
     })
-    let expYearsT = document.querySelector(".experience-years").offsetTop
-    let expYearsH = document.querySelector(".experience-years").offsetHeight
+}
+
+const experienceYears = document.querySelector(".experience-years")
+const expYearsH = experienceYears.offsetHeight
+const expText = document.querySelector(".experience-years-text")
+const expNum = document.querySelector(".experience-years-amount")
+function updateYearsZoom(winScr) {
+    let expYearsT = experienceYears.offsetTop
     if (expYearsT+expYearsH>winScr && winScr>expYearsT-100) {
-        let expText = document.querySelector(".experience-years-text")
-        let expNum = document.querySelector(".experience-years-amount")
         if (winScr<expYearsT) {
             expText.style.opacity = "1"
             expText.style.top = "15%"
@@ -155,11 +162,14 @@ function handleScrollingEvents() {
             expNum.style.transform = `scale(${ 1 + ((winScr-expYearsT)/40)})`
         }
     }
-    let thrLine1 = document.querySelector(".three-line-1")
-    let thrLine2 = document.querySelector(".three-line-2")
-    let thrLine3 = document.querySelector(".three-line-3")
-    let lines = document.querySelector(".three-lines")
-    let portfolioTop = document.querySelector(".portfolio-container").offsetTop
+}
+
+const abtCntTop = document.querySelector(".about-container").offsetTop
+const thrLine1 = document.querySelector(".three-line-1")
+const thrLine2 = document.querySelector(".three-line-2")
+const thrLine3 = document.querySelector(".three-line-3")
+const lines = document.querySelector(".three-lines")
+function updateLines(winScr){
     if (abtCntTop+1200>winScr && winScr>abtCntTop-300) {
         lines.style.alignItems = "flex-start"
         thrLine2.style.height = `${(winScr-abtCntTop+300)*0.1}vh`
@@ -183,10 +193,12 @@ function handleScrollingEvents() {
                         thrLine2.style.height = "100vh"
                         thrLine3.style.height = "100vh"
                 }
-    let featured = document.querySelector(".featured-projects")
-    let featuredTop = getOffsetTop(featured)
+}
+const portfolioTop = document.querySelector(".portfolio-container").offsetTop
+const featured = document.querySelector(".featured-projects")
+const featuredTop = getOffsetTop(featured)
+function updateFeatured(winScr){
     if (featuredTop>winScr && winScr>featuredTop-window.innerHeight) {
-    let featuredImg = document.querySelector(".featured-projects img")
         featuredImg.style.top = `${-(featuredTop-winScr)}px`
         // if (featuredTop-(window.innerHeight*0.7)>winScr) {
         //     console.log(`scale(${
@@ -197,17 +209,40 @@ function handleScrollingEvents() {
         //     })`
         // }
     }
-    let contactTop = document.querySelector(".contact-section").offsetTop
-    if (winScr+100>contactTop) {
-        let lastSliders = document.querySelector(".last-sliders")
-        if (contactTop-winScr>0) {
-            lastSliders.style.left = "0px"
-        }
-        lastSliders.style.left = `-${1.5*(winScr-contactTop)}px`
-    }
 }
 
+const contactTop = document.querySelector(".contact-section").offsetTop
+const lastSliders = document.querySelector(".last-sliders")
+const viewWidth = screen.width
+
+function updateLastSlider(winScr){
+    if (winScr-contactTop<(viewWidth/4) && winScr-contactTop>0) {
+        console.log(lastSliders.style.left)
+        lastSliders.style.left = "0px"
+    } else if (winScr-contactTop>(viewWidth/4)) {
+        lastSliders.style.left = `-${2*(winScr-contactTop-(viewWidth/4))}px`
+    }
+    
+}
+
+function handleScrollingEvents() {
+    let winScr = window.pageYOffset
+    updateScrollButton(winScr)
+    updateAboutImages(winScr)
+    updateYearsZoom(winScr)
+    updateLines(winScr)
+    updateFeatured(winScr)
+    updateLastSlider(winScr)
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+    if (window.pageYOffset > getOffsetTop(featuredImg)){
+        featuredImg.style.top = "0px"
+    }
+})
+
 window.addEventListener("scroll", handleScrollingEvents)
+
 
 const portfolioLinks = document.querySelectorAll(".portfolio-link")
 portfolioLinks.forEach((element) => {
@@ -219,8 +254,7 @@ portfolioLinks.forEach((element) => {
         document.querySelector(".screen-3").style.animationName = "reverse3"
         document.querySelector(".screen-4").style.animationName = "reverse4"
         setTimeout(() => {
-            zoomedPortfolio.style.opacity = '1'
-            zoomedPortfolio.style.pointerEvents = "all"
+            fixedPortfolio.style.display = 'block'
         }, 1000)
     })
 })
@@ -317,6 +351,7 @@ portfolioLinks[4].addEventListener("mouseout", () => {
 })
 
 const zoomedPortfolio = document.querySelector(".zoomed-portfolio")
+const fixedPortfolio = document.querySelector(".fixing-portfolio")
 portfolioLinks[0].addEventListener("click", () => {
     zoomedPortfolio.style.backgroundImage = 'url(./img/portfolio/portfolio1C.jpg)'
 })
@@ -339,12 +374,17 @@ document.querySelector(".cross").addEventListener("click", () => {
     document.querySelector(".screen-3").style.animationName = "preloader3"
     document.querySelector(".screen-4").style.animationName = "preloader4"
     setTimeout(() => {
-        zoomedPortfolio.style.opacity = '0'
-        zoomedPortfolio.style.pointerEvents = "none"
+        fixedPortfolio.style.display = "none"
     }, 1000)
     let portfolioSection = document.getElementById("Portfolio")
     portfolioSection.scrollIntoView()
 })
+
+function updateZoomedPortfolio(winScr){
+    if (fixedPortfolio.style.display=="block") {
+
+    }
+}
 
 const teamCarousel = document.querySelector(".our-team-slide-container")
 function handleButtonSelect(rate) {
