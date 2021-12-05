@@ -210,7 +210,7 @@ function updateFeatured(winScr){
 
 const contactTop = document.querySelector(".contact-section").offsetTop
 const lastSliders = document.querySelector(".last-sliders")
-const viewWidth = screen.width
+const viewWidth = window.innerWidth
 const bg2 = document.querySelector(".last-slide-2-background")
 const bg4 = document.querySelector(".last-slide-4-background")
 
