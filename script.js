@@ -200,27 +200,30 @@ const featuredTop = getOffsetTop(featured)
 function updateFeatured(winScr){
     if (featuredTop>winScr && winScr>featuredTop-window.innerHeight) {
         featuredImg.style.top = `${-(featuredTop-winScr)}px`
-        // if (featuredTop-(window.innerHeight*0.7)>winScr) {
-        //     console.log(`scale(${
-        //         1-(featuredTop-(window.innerHeight*0.7)-winScr)/((featuredTop-window.innerHeight)-(featuredTop-(window.innerHeight*0.7)))
-        //     })`)
-        //     featuredImg.style.transform = `scale(1.${
-        //         1-(featuredTop-(window.innerHeight*0.7)-winScr)/((featuredTop-window.innerHeight)-(featuredTop-(window.innerHeight*0.7)))
-        //     })`
-        // }
+        if (featuredTop-(window.innerHeight*0.5)>winScr) {
+            featuredImg.style.transform = `scale(${
+                1-((featuredTop-(window.innerHeight*0.5)-winScr)/((featuredTop-window.innerHeight)-(featuredTop-(window.innerHeight*0.7))))
+            })`
+        }
     }
 }
 
 const contactTop = document.querySelector(".contact-section").offsetTop
 const lastSliders = document.querySelector(".last-sliders")
 const viewWidth = screen.width
+const bg2 = document.querySelector(".last-slide-2-background")
+const bg4 = document.querySelector(".last-slide-4-background")
 
 function updateLastSlider(winScr){
     if (winScr-contactTop<(viewWidth/4) && winScr-contactTop>0) {
         console.log(lastSliders.style.left)
         lastSliders.style.left = "0px"
+        bg2.style.left = "0px"
+        bg4.style.left = "0px"
     } else if (winScr-contactTop>(viewWidth/4)) {
         lastSliders.style.left = `-${2*(winScr-contactTop-(viewWidth/4))}px`
+        bg2.style.left = `-${0.4*(winScr-contactTop-(viewWidth/4))}px`
+        bg4.style.left = `-${0.15*(winScr-contactTop-(viewWidth/4))}px`
     }
     
 }
@@ -238,6 +241,7 @@ function handleScrollingEvents() {
 document.addEventListener("DOMContentLoaded",()=>{
     if (window.pageYOffset > getOffsetTop(featuredImg)){
         featuredImg.style.top = "0px"
+        featuredImg.style.transform = "scale(1.0)"
     }
 })
 
@@ -350,22 +354,27 @@ portfolioLinks[4].addEventListener("mouseout", () => {
     document.querySelector(".third-portfolio-change.change5").style.transform = "rotate(-20deg) scale(1.7)"
 })
 
-const zoomedPortfolio = document.querySelector(".zoomed-portfolio")
+const zoomedPortfolio = document.querySelectorAll(".zportscr")
 const fixedPortfolio = document.querySelector(".fixing-portfolio")
 portfolioLinks[0].addEventListener("click", () => {
-    zoomedPortfolio.style.backgroundImage = 'url(./img/portfolio/portfolio1C.jpg)'
+    zoomedPortfolio.forEach((element)=>element.style.opacity = "0")
+    zoomedPortfolio[0].style.opacity = "1"
 })
 portfolioLinks[1].addEventListener("click", () => {
-    zoomedPortfolio.style.backgroundImage = 'url(./img/portfolio/portfolio2C.jpg)'
+    zoomedPortfolio.forEach((element)=>element.style.opacity = "0")
+    zoomedPortfolio[1].style.opacity = "1"
 })
 portfolioLinks[2].addEventListener("click", () => {
-    zoomedPortfolio.style.backgroundImage = 'url(./img/portfolio/portfolio3C.jpg)'
+    zoomedPortfolio.forEach((element)=>element.style.opacity = "0")
+    zoomedPortfolio[2].style.opacity = "1"
 })
 portfolioLinks[3].addEventListener("click", () => {
-    zoomedPortfolio.style.backgroundImage = 'url(./img/portfolio/portfolio4C.jpg)'
+    zoomedPortfolio.forEach((element)=>element.style.opacity = "0")
+    zoomedPortfolio[3].style.opacity = "1"
 })
 portfolioLinks[4].addEventListener("click", () => {
-    zoomedPortfolio.style.backgroundImage = 'url(./img/portfolio/portfolio5C.jpg)'
+    zoomedPortfolio.forEach((element)=>element.style.opacity = "0")
+    zoomedPortfolio[4].style.opacity = "1"
 })
 
 document.querySelector(".cross").addEventListener("click", () => {

@@ -312,6 +312,24 @@
         width: 40%;
     }
 }
+.zportscr{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
 .zoomed-portfolio-5 .port-header{
     background-image: url(../img/portfolio/portfolio5C.jpg);
+}
+.zoomed-portfolio-4 .port-header{
+    background-image: url(../img/portfolio/portfolio4C.jpg);
+}
+.zoomed-portfolio-3 .port-header{
+    background-image: url(../img/portfolio/portfolio3C.jpg);
+}
+.zoomed-portfolio-2 .port-header{
+    background-image: url(../img/portfolio/portfolio2C.jpg);
+}
+.zoomed-portfolio-1 .port-header{
+    background-image: url(../img/portfolio/portfolio1C.jpg);
 }

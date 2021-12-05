@@ -160,5 +160,7 @@
         position: absolute;
         width: 100%;
         top: -100%;
+        transform: scale(2.5);
+        transition: transform 0.5s;
     }
 }
