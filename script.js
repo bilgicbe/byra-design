@@ -5,7 +5,7 @@ const heroSlider = document.querySelector(".sliding-hero-container")
 const slidingBackground = document.querySelectorAll(".sliding>.select")
 const scrollButton = document.querySelector(".scroll-button")
 
-const featuredImg = document.querySelector(".featured-projects img")
+const featuredImg = document.querySelector(".featured-projects div")
 
 document.querySelector(".menu-footer").style.animationName = "menu-footer-animation"
 function handleBurgerClick() {
